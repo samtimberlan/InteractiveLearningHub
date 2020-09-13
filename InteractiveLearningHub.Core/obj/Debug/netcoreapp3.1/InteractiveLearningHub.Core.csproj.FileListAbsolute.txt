@@ -1,0 +1,9 @@
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Core\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Core.deps.json
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Core\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Core.dll
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Core\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Core.pdb
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Core\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Core.csprojAssemblyReference.cache
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Core\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Core.AssemblyInfoInputs.cache
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Core\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Core.AssemblyInfo.cs
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Core\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Core.csproj.CoreCompileInputs.cache
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Core\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Core.dll
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Core\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Core.pdb

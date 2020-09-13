@@ -1,0 +1,15 @@
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.deps.json
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.dll
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.csprojAssemblyReference.cache
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.AssemblyInfo.cs
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.runtimeconfig.json
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.runtimeconfig.dev.json
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.pdb
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Core.dll
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\bin\Debug\netcoreapp3.1\InteractiveLearningHub.Core.pdb
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.csproj.CopyComplete
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.dll
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.pdb
+C:\Users\timud\source\repos\InteractiveLearningHub\InteractiveLearningHub.Infrastructure\obj\Debug\netcoreapp3.1\InteractiveLearningHub.Infrastructure.genruntimeconfig.cache

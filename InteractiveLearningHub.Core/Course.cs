@@ -1,0 +1,16 @@
+﻿using System;
+
+namespace InteractiveLearningHub.Core
+{
+    public class Course
+    {
+        public Guid Id { get; set; }
+        public Guid ModifiedBy { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
+        public string Grade { get; set; }
+        public string Content { get; set; }
+        public Certificate certificate { get; set; }
+        public ApplicationUser Author { get; set; }
+    }
+}
