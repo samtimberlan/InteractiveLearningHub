@@ -17,5 +17,8 @@ namespace InteractiveLearningHub.Infrastructure.DataContext
         public DbSet<Course> Courses { get; set; }
         public DbSet<Exam> Exams { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Option> Options { get; set; }
+        public DbSet<UserExamGrade> UserExamGrades { get; set; }
     }
 }

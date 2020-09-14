@@ -9,6 +9,6 @@ namespace InteractiveLearningHub.Core
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public Course Course { get; set; }
-        public int score { get; set; }
+        public IList<Question> Questions { get; set; }
     }
 }

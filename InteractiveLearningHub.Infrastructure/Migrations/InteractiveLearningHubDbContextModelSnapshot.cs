@@ -25,8 +25,14 @@ namespace InteractiveLearningHub.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdentityUserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -72,11 +78,11 @@ namespace InteractiveLearningHub.Infrastructure.Migrations
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Grade")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("ModifiedBy")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -97,14 +103,80 @@ namespace InteractiveLearningHub.Infrastructure.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("score")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CourseId");
 
                     b.ToTable("Exams");
+                });
+
+            modelBuilder.Entity("InteractiveLearningHub.Core.Option", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("OptionContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OptionDescriptorTag")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Options");
+                });
+
+            modelBuilder.Entity("InteractiveLearningHub.Core.Question", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AnswerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ExamId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("QuestionOptionsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnswerId");
+
+                    b.HasIndex("ExamId");
+
+                    b.HasIndex("QuestionOptionsId");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("InteractiveLearningHub.Core.UserExamGrade", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ApplicationUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Grade")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserExamGrades");
                 });
 
             modelBuilder.Entity("InteractiveLearningHub.Core.Certificate", b =>
@@ -121,7 +193,7 @@ namespace InteractiveLearningHub.Infrastructure.Migrations
             modelBuilder.Entity("InteractiveLearningHub.Core.Course", b =>
                 {
                     b.HasOne("InteractiveLearningHub.Core.ApplicationUser", "Author")
-                        .WithMany("Courses")
+                        .WithMany("Course")
                         .HasForeignKey("AuthorId");
                 });
 
@@ -130,6 +202,21 @@ namespace InteractiveLearningHub.Infrastructure.Migrations
                     b.HasOne("InteractiveLearningHub.Core.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId");
+                });
+
+            modelBuilder.Entity("InteractiveLearningHub.Core.Question", b =>
+                {
+                    b.HasOne("InteractiveLearningHub.Core.Option", "Answer")
+                        .WithMany()
+                        .HasForeignKey("AnswerId");
+
+                    b.HasOne("InteractiveLearningHub.Core.Exam", null)
+                        .WithMany("Questions")
+                        .HasForeignKey("ExamId");
+
+                    b.HasOne("InteractiveLearningHub.Core.Option", "QuestionOptions")
+                        .WithMany()
+                        .HasForeignKey("QuestionOptionsId");
                 });
 #pragma warning restore 612, 618
         }

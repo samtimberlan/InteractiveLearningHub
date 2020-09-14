@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InteractiveLearningHub.Auth;
+using InteractiveLearningHub.Auth.Claims;
+using InteractiveLearningHub.Core;
 using InteractiveLearningHub.Core.Abstractions;
 using InteractiveLearningHub.Infrastructure.DataContext;
 using InteractiveLearningHub.Infrastructure.Repository;
@@ -11,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -48,6 +52,9 @@ namespace InteractiveLearningHub
                 options => options.UseSqlServer(Configuration.GetConnectionString("InteractiveLearningHubConnection")));
 
             services.AddScoped<IInteractiveLearningHubRepository, InteractiveLearningHubRepository>();
+            services.AddHttpContextAccessor();
+            services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, InteractiveLearningHubClaimsPrincipalFactory>();
 
             services.AddLogging();
         }

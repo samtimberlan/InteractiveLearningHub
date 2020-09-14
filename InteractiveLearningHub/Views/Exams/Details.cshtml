@@ -1,0 +1,48 @@
+﻿@model InteractiveLearningHub.Core.Exam
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Exam</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+    </dl>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Question</th>
+            </tr>
+            <tr>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var question in Model.Questions)
+            {
+            <tr>
+                <td>@question.Content</td>
+                @foreach (var option in question.QuestionOptions)
+                {
+                    <td>@option.OptionDescriptorTag</td>
+                    <td>@option.OptionContent</td>
+                }
+            </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

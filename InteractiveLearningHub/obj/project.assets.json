@@ -8922,6 +8922,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "InteractiveLearningHub.Core >= 1.0.0",
       "InteractiveLearningHub.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.AzureAD.UI >= 3.1.7",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.8",
@@ -8961,6 +8962,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\Users\\timud\\source\\repos\\InteractiveLearningHub\\InteractiveLearningHub.Core\\InteractiveLearningHub.Core.csproj": {
+              "projectPath": "C:\\Users\\timud\\source\\repos\\InteractiveLearningHub\\InteractiveLearningHub.Core\\InteractiveLearningHub.Core.csproj"
+            },
             "C:\\Users\\timud\\source\\repos\\InteractiveLearningHub\\InteractiveLearningHub.Infrastructure\\InteractiveLearningHub.Infrastructure.csproj": {
               "projectPath": "C:\\Users\\timud\\source\\repos\\InteractiveLearningHub\\InteractiveLearningHub.Infrastructure\\InteractiveLearningHub.Infrastructure.csproj"
             }

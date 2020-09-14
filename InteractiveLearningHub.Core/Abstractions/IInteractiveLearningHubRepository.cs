@@ -15,6 +15,6 @@ namespace InteractiveLearningHub.Core.Abstractions
         Task DeleteCourseAsync(Guid? id);
         bool CourseExists(Guid id);
         Task<bool> SaveChangesAsync();
-        //Task<IEnumerable<Course>> GetAllCourses();
+        Task<Exam> GetAllCourseExamQuestionsAsync(Guid? courseId);
     }
 }

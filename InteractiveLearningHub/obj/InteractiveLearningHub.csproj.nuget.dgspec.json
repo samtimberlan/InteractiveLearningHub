@@ -156,6 +156,9 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+              "C:\\Users\\timud\\source\\repos\\InteractiveLearningHub\\InteractiveLearningHub.Core\\InteractiveLearningHub.Core.csproj": {
+                "projectPath": "C:\\Users\\timud\\source\\repos\\InteractiveLearningHub\\InteractiveLearningHub.Core\\InteractiveLearningHub.Core.csproj"
+              },
               "C:\\Users\\timud\\source\\repos\\InteractiveLearningHub\\InteractiveLearningHub.Infrastructure\\InteractiveLearningHub.Infrastructure.csproj": {
                 "projectPath": "C:\\Users\\timud\\source\\repos\\InteractiveLearningHub\\InteractiveLearningHub.Infrastructure\\InteractiveLearningHub.Infrastructure.csproj"
               }

@@ -8,9 +8,8 @@ namespace InteractiveLearningHub.Core
         public Guid ModifiedBy { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
-        public string Grade { get; set; }
         public string Content { get; set; }
-        public Certificate certificate { get; set; }
+        public string Title { get; set; }
         public ApplicationUser Author { get; set; }
     }
 }

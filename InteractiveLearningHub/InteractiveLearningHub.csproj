@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InteractiveLearningHub.Core\InteractiveLearningHub.Core.csproj" />
     <ProjectReference Include="..\InteractiveLearningHub.Infrastructure\InteractiveLearningHub.Infrastructure.csproj" />
   </ItemGroup>
 

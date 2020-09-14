@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using InteractiveLearningHub.Core;
 using InteractiveLearningHub.Infrastructure.DataContext;
 using InteractiveLearningHub.Core.Abstractions;
+using System.Security.Authentication;
+using Microsoft.Extensions.Logging;
+using InteractiveLearningHub.ViewModels;
 
 namespace InteractiveLearningHub.Controllers
 {
@@ -15,11 +18,16 @@ namespace InteractiveLearningHub.Controllers
     {
         private readonly InteractiveLearningHubDbContext _context;
         private readonly IInteractiveLearningHubRepository _repository;
+        private readonly ILogger<CoursesController> _logger;
+        private readonly IUserService _userService;
 
-        public CoursesController(InteractiveLearningHubDbContext context, IInteractiveLearningHubRepository repository)
+        public CoursesController(InteractiveLearningHubDbContext context, IInteractiveLearningHubRepository repository, ILogger<CoursesController> logger, IUserService userService)
         {
             _context = context;
             _repository = repository;
+            _logger = logger;
+            _userService = userService;
+            //_userService.AddUserEmployeeTypeClaimAsync("General");
         }
 
         // GET: Courses
@@ -55,13 +63,21 @@ namespace InteractiveLearningHub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Content")] Course course)
         {
-            if (ModelState.IsValid)
+            try
             {
-                await _repository.CreateCourseAync(course);
-                await _repository.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    await _repository.CreateCourseAync(course);
+                    await _repository.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(course);
             }
-            return View(course);
+            catch (InvalidCredentialException)
+            {
+                _logger.LogError("Unable to access claims for unauthenticated user.");
+                return View("/");
+            }
         }
 
         // GET: Courses/Edit/5
@@ -80,6 +96,7 @@ namespace InteractiveLearningHub.Controllers
             return View(course);
         }
 
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("Content")] Course course)
         {
@@ -138,11 +155,17 @@ namespace InteractiveLearningHub.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Courses/{id}/BeginPracticeExam
+        // GET: Courses/PracticeExam/{id}
         [ActionName("Exam")]
-        public async Task<IActionResult> BeginPracticeExam(Guid id)
+        public async Task<IActionResult> BeginPracticeExam(Guid? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var exam = await _repository.GetAllCourseExamQuestionsAsync(id);
+            return View(exam);
         }
     }
 }

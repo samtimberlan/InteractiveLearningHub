@@ -15,11 +15,19 @@ namespace InteractiveLearningHub.Infrastructure.Repository
     {
         private readonly InteractiveLearningHubDbContext _context;
         private readonly ILogger<InteractiveLearningHubRepository> _logger;
+        private readonly IUserService _user;
+        private readonly string _identityUserId;
+        private readonly Guid _localUserId;
+        private readonly string _fullName;
 
-        public InteractiveLearningHubRepository(InteractiveLearningHubDbContext context, ILogger<InteractiveLearningHubRepository> logger)
+        public InteractiveLearningHubRepository(InteractiveLearningHubDbContext context, ILogger<InteractiveLearningHubRepository> logger, IUserService user)
         {
             _context = context;
             _logger = logger;
+            _user = user;
+            _identityUserId = _user.GetIdentityUserId();
+            _localUserId = _user.GetLocalUserIdByIdentityId(_identityUserId);
+            _fullName = _user.GetIdentityUserFullName();
         }
         public DateTime GetDate() => DateTime.UtcNow.AddHours(1);
 
@@ -47,8 +55,11 @@ namespace InteractiveLearningHub.Infrastructure.Repository
         {
             course.Id = Guid.NewGuid();
             course.DateCreated = DateTime.UtcNow.AddHours(1);
-            // TODO: Create UserManager
-            //course.Author = 
+            course.Author = new ApplicationUser()
+            {
+                IdentityUserId = _user.GetIdentityUserId(),
+                FullName = _user.GetIdentityUserFullName()
+            };
             _logger.LogInformation($"Creating course with id: {course.Id}");
             await _context.AddAsync<Course>(course);
             return course;
@@ -59,8 +70,7 @@ namespace InteractiveLearningHub.Infrastructure.Repository
             Course outdatedCourse = await _context.Courses.FindAsync(course.Id);
             outdatedCourse.Content = course.Content;
             outdatedCourse.DateModified = this.GetDate();
-            // TODO: Create UserManager
-            //outdatedCourse.ModifiedBy = 
+            outdatedCourse.ModifiedBy = _localUserId;
             _logger.LogInformation($"Editing course with id: {course.Id}.");
             _context.Update(course);
             return course;
@@ -85,8 +95,11 @@ namespace InteractiveLearningHub.Infrastructure.Repository
         {
             Certificate certificate = new Certificate
             {
-                // TODO
-                //CertificateOwner = ,
+                CertificateOwner = new ApplicationUser() {
+                    Id = _localUserId,
+                    IdentityUserId = _identityUserId,
+                    FullName = _user.GetIdentityUserFullName()
+                },
                 Course = course,
                 Id = Guid.NewGuid()
             };
@@ -96,17 +109,26 @@ namespace InteractiveLearningHub.Infrastructure.Repository
         #endregion
 
         #region Exam
-        public async Task<Certificate> CreateCourseExam(Course course)
+        public async Task<Exam> CreateCourseExam(Course course)
         {
             Exam exam = new Exam
             {
-                // TODO
-                //UserId = ,
+                UserId = _localUserId,
                 Course = course,
                 Id = Guid.NewGuid()
             };
-            await _context.AddAsync<Certificate>(certificate);
-            return certificate;
+            await _context.AddAsync<Exam>(exam);
+            return exam;
+        }
+        #endregion
+
+        #region Exam
+        public async Task<Exam> GetAllCourseExamQuestionsAsync(Guid? courseId)
+        {
+            return await _context.Exams
+                .Include(exam => exam.Course)
+                .Include(exam => exam.Questions)
+                .FirstOrDefaultAsync(exam => exam.Course.Id == courseId);
         }
         #endregion
     }

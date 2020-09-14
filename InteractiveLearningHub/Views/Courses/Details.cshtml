@@ -23,10 +23,10 @@
             @Html.DisplayFor(model => model.DateModified)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Grade)
+            @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Grade)
+            @Html.DisplayFor(model => model.Title)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Content)
@@ -38,5 +38,6 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Exam" asp-route-id="@Model.Id">Practice Exam</a> |
     <a asp-action="Index">Back to List</a>
 </div>
